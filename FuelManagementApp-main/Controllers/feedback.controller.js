@@ -17,7 +17,7 @@ const getAllFeedbacks = async (req, res) => {
 
 const getFeedbackDetails = async (req, res) => {
     if (req.body) {
-      await Feedback.findOne({ fuelCenterName: req.params.fuelCenterName }).then((data) => {res.status(200).send({ data });})
+      await Feedback.findOne({ fuelStationName: req.params.fuelStationName }).then((data) => {res.status(200).send({ data });})
         .catch((err) => {
           res.status(500).send(err);
         });

@@ -36,7 +36,7 @@ const updateFuelStation = async (req, res) => {
 };
 
 const deleteFuelStation = async (req, res) => {
-    await FuelStation.findByIdAndDelete(req.params.id).then(() => {res.status(200).send({ status: "Fuel Center Deleted" });})
+    await FuelStation.findByIdAndDelete(req.params.id).then(() => {res.status(200).send({ status: "Fuel Station Deleted" });})
       .catch((err) => {
         res.status(500).send(err);
     });

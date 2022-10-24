@@ -11,7 +11,7 @@ const addQueue = async (req, res) => {
 // const addQueue = async (req, res) => {
 //   if (req.body) {
 //     const queue = new Queue(req.body);
-//     queue.flueCenterName = req.body.flueCenterName;
+//     queue.fuelStationName = req.body.fuelStationName;
 //     queue.vehicleId = req.body.vehicleId;
 //     queue.OwnerName = req.body.OwnerName;
 //     queue.fuelType = req.body.fuelType;
@@ -38,7 +38,7 @@ const getAllQueues = async (req, res) => {
 
 const getQueueDetails = async (req, res) => {
     if (req.body) {
-      await Queue.findOne({ flueCenterName: req.params.flueCenterName }).then((data) => {res.status(200).send({ data });})
+      await Queue.findOne({ fuelStationName: req.params.fuelStationName }).then((data) => {res.status(200).send({ data });})
         .catch((err) => {
           res.status(500).send(err);
         });
@@ -74,7 +74,7 @@ const deleteQueue = async (req, res) => {
 
 const getCountofQueue = async (req, res) => {
     try {
-      const result = await Queue.count({ flueCenterName: req.params.flueCenterName });
+      const result = await Queue.count({ fuelStationName: req.params.fuelStationName });
       return res.status(200).json(result);
     } catch {
       return res.status(400).json({ success: false });
@@ -83,7 +83,7 @@ const getCountofQueue = async (req, res) => {
 
 const getCountofPetrolQueue = async (req, res) => {
     try {
-      const result = await Queue.count({ flueCenterName: req.params.flueCenterName })
+      const result = await Queue.count({ fuelStationName: req.params.fuelStationName })
       .find({fuelType:"Petrol"})
       .countDocuments();
       return res.status(200).json(result);
@@ -94,7 +94,7 @@ const getCountofPetrolQueue = async (req, res) => {
 
 const getCountofDieselQueue = async (req, res) => {
     try {
-      const result = await Queue.count({ flueCenterName: req.params.flueCenterName })
+      const result = await Queue.count({ fuelStationName: req.params.fuelStationName })
       .find({fuelType:"Diesel"})
       .countDocuments();
       return res.status(200).json(result);
@@ -102,6 +102,8 @@ const getCountofDieselQueue = async (req, res) => {
       return res.status(400).json({ success: false });
     }
   }
+
+  
 
 module.exports = {
     addQueue,
