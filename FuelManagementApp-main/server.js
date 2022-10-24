@@ -6,28 +6,28 @@ const app = express();
 require("dotenv").config();
 
 
-const PORT = process.env.PORT || 8070;
+
 
 app.use(cors());
 app.use(bodyParser.json());
 
-const URL = process.env.MONGODB_URI;
+const PORT = 8000;
+const DB_URL ='mongodb+srv://shashini1996:shashini1996@cluster1.ou11uam.mongodb.net/fueldbo?retryWrites=true&w=majority';
 
-const dbConnect = () => {
-  const URL = process.env.MONGODB_URI;
+mongoose.connect(DB_URL,{
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+})
 
-mongoose.connect(URL, () => {
-  console.log("db connected")
 
-});
-};
+.then(() =>{
+    console.log('DB connected');
+})
+.catch((err) => console.log('DB connection error',err));
+
+
+
   
-  
-  const connection = mongoose.connection;
-  connection.once("open", () => {
-    console.log('_MongoDB Connection Success_')
-  })
-
   const FuelStation = require("./Routes/fuelStation.route");
   const Queue = require("./Routes/queue.route");
   const FuelStatus = require("./Routes/fuelStatus.route");
@@ -43,8 +43,8 @@ mongoose.connect(URL, () => {
   app.use("/customer", Customer());
   
 
-  app.listen(9000, () => {
-    dbConnect();
-    console.log(`Server is up and running at port`)
-})
+  app.listen(PORT, () =>{
+
+    console.log(`App is running on ${PORT}`);
+});
 
