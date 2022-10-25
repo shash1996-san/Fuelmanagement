@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 const fuelStatusSchema = new Schema({
 
-    flueStationId : { type : String, required: true },
-    flueStationName : { type : String, required: true },
+    fuelStationId : { type : String, required: true },
+    fuelStationName : { type : String, required: true },
     PetrolAvailable : { type : String, required: true },
     Dieselvailable : { type : String, required: true },
     FinishlTime : { type : String, required: true },

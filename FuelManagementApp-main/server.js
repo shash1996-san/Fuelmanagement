@@ -3,13 +3,17 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-require("dotenv").config();
+const dotenv = require('dotenv')
 
 
 
 
 app.use(cors());
 app.use(bodyParser.json());
+
+dotenv.config({
+  path: './config/config.env'
+});
 
 const PORT = 8000;
 const DB_URL ='mongodb+srv://shashini1996:shashini1996@cluster1.ou11uam.mongodb.net/fueldbo?retryWrites=true&w=majority';
@@ -35,7 +39,7 @@ mongoose.connect(DB_URL,{
   const Customer = require("./Routes/customer.route");
  
 
-
+  app.use('/api/todo/auth', require('./Controllers/user.controller'));
   app.use("/fuelStation", FuelStation());
   app.use("/queue", Queue());
   app.use("/status", FuelStatus());
