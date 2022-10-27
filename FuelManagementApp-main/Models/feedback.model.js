@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const feedbackSchema = new Schema({
     feedbackerId : { type : String, required: true },
-    fuelStationId : { type : String, required: true },
+    fuelStationId : { type : String, },
     fuelStationName : { type : String, required: true },
     Comment : { type : String, required: true }, 
 })

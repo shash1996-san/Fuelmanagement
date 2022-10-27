@@ -39,7 +39,7 @@ mongoose.connect(DB_URL,{
   const Customer = require("./Routes/customer.route");
  
 
-  app.use('/api/todo/auth', require('./Controllers/user.controller'));
+  app.use('/api/fuel/auth', require('./Controllers/user.controller'));
   app.use("/fuelStation", FuelStation());
   app.use("/queue", Queue());
   app.use("/status", FuelStatus());
